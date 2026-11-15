@@ -15,7 +15,26 @@ import TopRatedMoviesPage from "./pages/topRatedMovies";
 import MoviesPlayingNowPage from "./pages/moviesNowPlaying";
 import ActorsAndMovies from "./pages/actorMovies";
 import PlaylistPage from "./pages/Playlist";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
+const theme = createTheme({
+  palette: {
+    primary: { main: "#1e3a8a" },       
+    secondary: { main: "#7c3aed" },     
+    background: {
+      default: "#f4f6f8",               
+      paper: "#ffffff",                
+    },
+  },
+  typography: {
+   fontFamily: '"Inter", sans-serif', 
+  h1: { fontFamily: '"Bebas Neue", sans-serif', letterSpacing: "0.05em" },
+  h2: { fontFamily: '"Bebas Neue", sans-serif', letterSpacing: "0.05em" },
+  h3: { fontFamily: '"Bebas Neue", sans-serif', letterSpacing: "0.05em" },
+  h4: { fontFamily: '"Bebas Neue", sans-serif', letterSpacing: "0.05em" },
+  },
+});
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,6 +48,8 @@ const queryClient = new QueryClient({
 
 const App = () => {
   return (
+     <ThemeProvider theme={theme}>
+    <CssBaseline />
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SiteHeader />
@@ -51,6 +72,7 @@ const App = () => {
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 
