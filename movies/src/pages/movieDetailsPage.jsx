@@ -4,8 +4,9 @@ import PageTemplate from "../components/templateMoviePage";
 import { getMovie } from '../api/tmdb-api'
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../components/spinner';
+import MovieCredits from '../components/movieCredits';
 
-const MoviePage = (props) => {
+const MoviePage = () => {
   const { id } = useParams();
 
   const { data: movie, error, isPending, isError  } = useQuery({
@@ -28,6 +29,7 @@ const MoviePage = (props) => {
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
+            <MovieCredits movie={movie}/>
           </PageTemplate>
         </>
       ) : (
